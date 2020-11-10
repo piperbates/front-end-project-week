@@ -1,0 +1,60 @@
+.hide {
+  display: none;
+}
+
+.btns {
+  background-color: #2861ae;
+  color: white;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btns:hover {
+  background-color: #03234d;
+}
+
+.form {
+  background-color: #8693a6;
+  /* display: flex; */
+  flex-direction: column;
+  max-width: 700px;
+  margin: auto;
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #42646a;
+  height: auto;
+}
+
+input {
+  width: 70%;
+  background-color: white;
+  border: none;
+  float: right;
+  border-radius: 5px;
+  padding: 10px;
+  border: solid 1px #00adbb;
+}
+
+label {
+  margin: 10px;
+  text-align: left;
+}
+
+.btnsClose {
+  width: 30px;
+  height: 30px;
+  float: left;
+  border-radius: 100px;
+}
+
+.field {
+  margin: 20px;
+}
+
+.subForm {
+  display: flex;
+}
