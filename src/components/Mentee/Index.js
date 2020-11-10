@@ -5,9 +5,9 @@ import Input from "../Input";
 function Mentee() {
   return (
     <div>
-      <Input labelName="" />
-      <Input labelName="" />
-      <Input labelName="" />
+      <Input labelName="kj" />
+      <Input labelName="jh" />
+      <Input labelName="ljkb" />
     </div>
   );
 }

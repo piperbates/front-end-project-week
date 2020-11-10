@@ -1,21 +1,21 @@
 import "./App.css";
+import Navbar from "../Nav";
+import Home from "../Home";
+import Form from "../Form"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Happy Project Week</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React Docs R Here
-        </a>
-      </header>
+      {/* <Home /> */}
+      <Form />
     </div>
   );
 }
 
 export default App;
+
+//<Home/>
+// create a nav bar with three links mentor(form) mentee(form) matches(display)
+//image - people working togteher
+//text - blurb
+//footer
