@@ -10,7 +10,6 @@ function App() {
     <Nav />
     
       <Footer />
-      <Form />
     </div>
   );
 }

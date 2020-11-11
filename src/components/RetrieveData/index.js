@@ -17,6 +17,7 @@ function RetrieveData() {
   // }
   return (
     <div>
+    <p>Example Test for the Retrieve Data comp</p>
       <button onClick={getAllData}>Get all data</button>
       <DisplayTable quote={formData?.quote} />
     </div>
