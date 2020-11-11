@@ -18,6 +18,7 @@
   padding: 10px;
   margin: 5px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .btnsForm:hover {
@@ -89,4 +90,10 @@ label {
 .formTitleMentor {
   text-align: left;
   color: #147592;
+}
+
+.formImage {
+  background-image: url(../../imgs/home.JPG);
+  height: 100%;
+  width: auto;
 }

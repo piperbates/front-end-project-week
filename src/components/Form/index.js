@@ -92,6 +92,10 @@ function Form() {
             <br />
             <input type="text" id="lname" name="lname" />
           </div>
+
+          <div className="field">
+            <button className="btnsForm">Submit!</button>
+          </div>
         </form>
       </div>
 
