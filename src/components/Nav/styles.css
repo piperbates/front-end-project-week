@@ -1,0 +1,22 @@
+/* .nav {
+
+} */
+
+/* button {
+  background-color: #147592;
+} */
+
+.btnNav {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #535353;
+  padding: 10px;
+  margin: 10px;
+}
+
+.btnNav:hover {
+  background-color: #147592;
+  color: white;
+  border-radius: 5px;
+}

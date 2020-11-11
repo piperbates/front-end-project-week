@@ -1,17 +1,20 @@
-.container{
-    width: auto;
-    margin: auto;
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color:#31986A;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    color: white;
-    font-family: Roboto,Arial,sans-serif;
+.container {
+  width: 70%;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #147592;
+  position: relative;
+  bottom: 0;
+  color: white;
 }
 
-.main{
-    background-color:#31986A;
-    width: 100%; 
+.main {
+  background-color: #147592;
+  width: 100%;
+}
+
+.space {
+  height: 100%;
+  width: 100%;
 }

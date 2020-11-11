@@ -8,8 +8,8 @@ function App() {
     <div className="App">
       {/* <Home /> */}
       <Form />
-      <RetrieveData />
-      <Footer />
+      {/* <RetrieveData /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
