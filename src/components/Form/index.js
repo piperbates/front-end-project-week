@@ -21,16 +21,32 @@ function Form() {
   const [torForm4, setTorForm4] = useState("");
   const [torForm5, setTorForm5] = useState("");
   console.log("log", torForm1, torForm2, torForm3, torForm4, torForm5);
+
+  //Zaid's test
+  let createTodo = (msg) => {
+    console.log("todo fnc", msg);
+    fetch(`http://localhost:5000/test`, {
+      method: "post",
+      body: JSON.stringify({ todo: msg }),
+      headers: { "Content-Type": "application/json" },
+      //Validation: ContentType
+    })
+      .then((res) => res.json()) //res.json() is an async function
+      .then((data) => console.log(data, "here's the data, buddy boy")) //In the browser
+      .catch((error) => console.log(error, "my error")); //uncaught promise rejection. The promise throws and error and I need to catch otherwise it will be thrown into the ether
+  };
+  //----------Test End------------//
+
   //Submut mentee function
-  function postMenteeForm(teeForm1, teeForm2, teeForm3, teeForm4) {
-    console.log("mentee fnc", teeForm1, teeForm2, teeForm3, teeForm4);
+  function postMenteeForm(msg1, msg2, msg3, msg4) {
+    console.log("mentee fnc", msg1, msg2, msg3, msg4);
     fetch(`http://localhost:5000/mentee`, {
       method: "post",
       body: JSON.stringify({
-        mentee: teeForm1,
-        mentee: teeForm2,
-        mentee: teeForm3,
-        mentee: teeForm4,
+        name: msg1,
+        age: msg2,
+        ethnicity: msg3,
+        myersBriggs: msg4,
       }),
       headers: { "Content-Type": "application/json" },
       //Validation: ContentType
@@ -42,7 +58,7 @@ function Form() {
 
   //Submut mantor function
   function postMentorForm(torForm1, torForm2, torForm3, torForm4, torForm5) {
-    console.log("mentee fnc", torForm1, torForm2, torForm3, torForm4, torForm5);
+    console.log("mentor fnc", torForm1, torForm2, torForm3, torForm4, torForm5);
     fetch(`http://localhost:5000/mentor`, {
       method: "post",
       body: JSON.stringify({
@@ -86,6 +102,11 @@ function Form() {
     <div className="containerForm">
       <br />
       <br />
+      <button
+        onClick={() => postMenteeForm(teeForm1, teeForm2, teeForm3, teeForm4)}
+      >
+        Test Submit
+      </button>
       <h1 className="h1Form">
         Hello, It's wonderful <br />
         to see you here
@@ -166,7 +187,12 @@ function Form() {
           </div>
 
           <div className="field">
-            <button className="btnsForm" onClick={postMenteeForm}>
+            <button
+              className="btnsForm"
+              onClick={() =>
+                postMenteeForm(teeForm1, teeForm2, teeForm3, teeForm4)
+              }
+            >
               Submit!
             </button>
           </div>
