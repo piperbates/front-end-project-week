@@ -4,7 +4,6 @@ import Navbar from "../Nav";
 function Home() {
   return (
     <div>
-      <Navbar />
       <img
         src="../../imgs/home.JPG"
         alt="home banner"

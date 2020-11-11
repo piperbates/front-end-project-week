@@ -84,7 +84,6 @@ function Form() {
 
   return (
     <div className="containerForm">
-      <Navbar />
       <br />
       <br />
       <h1 className="h1Form">
@@ -103,6 +102,7 @@ function Form() {
       </div>
       <br />
       <br />
+      {/* MENTEE FORM BELOW */}
       <div className={menteeForm}>
         <button onClick={hideMentee} className="btnsCloseForm">
           x
@@ -172,6 +172,8 @@ function Form() {
           </div>
         </form>
       </div>
+
+      {/*MENTOR FORM BELOW*/}
 
       <div className={mentorForm}>
         <button onClick={hideMentor} className="btnsCloseForm">
@@ -252,7 +254,6 @@ function Form() {
           </div>
         </form>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -2,16 +2,15 @@ import "./App.css";
 import Form from "../Form";
 //import RetrieveData from "../RetrieveData";
 import Footer from "../Footer";
-import Nav from "../Nav";
+import Nav from "../Nav"
 
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
-      <Nav/>
+    <Nav />
+    
+      <Footer />
       <Form />
-      {/* <RetrieveData /> */}
-      <Footer /> 
     </div>
   );
 }
