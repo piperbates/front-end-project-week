@@ -19,24 +19,12 @@ function RetrieveData() {
 
   return (
     <div>
-      <div>
-        {/* <p>{quote.name}</p> */}
-        <p>Example Test for the Retrieve Data comp</p>
-            <button onClick={getAllData}>Get all data</button>
-        <table id="data-display">
-          <thead>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Ethnicity</th>
-            <th>Myers Briggs</th>
-          </thead>
-          <tbody>
-           
-
-            <DisplayTable payload={formData} />
-          </tbody>
-        </table>
-      </div>
+    
+    <p>Example Test for the Retrieve Data comp</p>
+      <button onClick={getAllData}>Get all data</button>
+   
+     <DisplayTable payload={formData} />
+      
     </div>
   );
 }

@@ -6,7 +6,16 @@ import "./style.css";
 function DisplayTable({ payload }) {
   console.log(payload);
   return (
-   
+    <div>
+      {/* <p>{quote.name}</p> */}
+      <table id="data-display">
+        <thead>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Ethnicity</th>
+          <th>Myers Briggs</th>
+        </thead>
+        <tbody>
           {/* {payload.map((item) => {
             return (
               <tr>
@@ -17,7 +26,9 @@ function DisplayTable({ payload }) {
               </tr>
             );
           })} */}
-    
+        </tbody>
+      </table>
+    </div>
   );
 }
 
