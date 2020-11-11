@@ -6,6 +6,10 @@
   );
 }
 
+.image {
+  background-image: url(https://cdn.dribbble.com/users/1647667/screenshots/13994154/media/a90aab4e64f4c96cc62b3618c8017be9.jpg);
+}
+
 .hide {
   display: none;
 }
@@ -91,8 +95,8 @@ label {
   color: #147592;
 }
 
-.formImage {
-  background-image: url(../../imgs/home.JPG);
+/* .formImage {
+  background-image: url(https://cdn.dribbble.com/users/1647667/screenshots/13994154/media/a90aab4e64f4c96cc62b3618c8017be9.jpg);
   height: 100%;
   width: auto;
-}
+} */

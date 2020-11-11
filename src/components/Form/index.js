@@ -103,11 +103,7 @@ function Form() {
     <div className="containerForm">
       <br />
       <br />
-      <button
-        onClick={() => postMenteeForm(teeForm1, teeForm2, teeForm3, teeForm4)}
-      >
-        Test Submit
-      </button>
+
       <h1 className="h1Form">
         Hello, It's wonderful <br />
         to see you here
