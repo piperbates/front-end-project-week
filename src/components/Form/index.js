@@ -57,15 +57,16 @@ function Form() {
   }
 
   //Submut mantor function
-  function postMentorForm(torForm1, torForm2, torForm3, torForm4, torForm5) {
-    console.log("mentor fnc", torForm1, torForm2, torForm3, torForm4, torForm5);
+  function postMentorForm(msg1, msg2, msg3, msg4, msg5) {
+    console.log("mentor fnc", msg1, msg2, msg3, msg4, msg5);
     fetch(`http://localhost:5000/mentor`, {
       method: "post",
       body: JSON.stringify({
-        mentor: torForm1,
-        mentor: torForm2,
-        mentor: torForm3,
-        mentor: torForm4,
+        name: msg1,
+        age: msg2,
+        ethnicity: msg3,
+        myersBriggs: msg4,
+        experience: msg5,
       }),
       headers: { "Content-Type": "application/json" },
       //Validation: ContentType
@@ -274,7 +275,12 @@ function Form() {
           </div>
 
           <div className="field">
-            <button className="btnsForm" onClick={postMentorForm}>
+            <button
+              className="btnsForm"
+              onClick={() =>
+                postMentorForm(torForm1, torForm2, torForm3, torForm4, torForm5)
+              }
+            >
               Submit!
             </button>
           </div>
