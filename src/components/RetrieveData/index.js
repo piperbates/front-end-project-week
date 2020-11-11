@@ -9,13 +9,13 @@ function RetrieveData() {
   async function getAllData() {
     const res = await fetch("http://www.localhost:5000/mentor");
     const data = await res.json();
-    console.log(data)
-    // setFormData(data);
+
+    setFormData(data);
+  }
+  function handleClick() {
+    setFormData(formData);
   }
 
-  // function handleClick() {
-  //   setFormData(formData);
-  // }
   return (
     <div>
     
