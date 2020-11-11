@@ -7,9 +7,10 @@ function RetrieveData() {
   const [formData, setFormData] = useState();
 
   async function getAllData() {
-    const res = await fetch("https://api.kanye.rest");
+    const res = await fetch("http://www.localhost:5000/mentor");
     const data = await res.json();
-    setFormData(data);
+    console.log(data)
+    // setFormData(data);
   }
 
   // function handleClick() {
@@ -17,6 +18,7 @@ function RetrieveData() {
   // }
   return (
     <div>
+    
     <p>Example Test for the Retrieve Data comp</p>
       <button onClick={getAllData}>Get all data</button>
       <DisplayTable quote={formData?.quote} />
