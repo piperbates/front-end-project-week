@@ -7,7 +7,7 @@ function RetrieveData() {
   const [formData, setFormData] = useState([]);
 
   async function getAllData() {
-    const res = await fetch("http://www.localhost:5000/mentor");
+    const res = await fetch("http://www.localhost:5000/mentee");
     const data = await res.json();
     let payload = data.payload;
     console.log(payload);
