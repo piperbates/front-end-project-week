@@ -6,13 +6,14 @@ import {
   industries, languages
 } from "./form-details";
 
+
 // Parent component of Mentor, Mentee, submit. In here we will take the information from Mentor & Mentee and the submit component will pass the data to our database
 function Form() {
   const [menteeForm, setMenteeForm] = useState("form hide");
   const [mentorForm, setMentorForm] = useState("form hide");
 
   //Getting input value and save to variable Mentee
-  const [teeForm1, setTeeForm1] = useState("");
+  const [firstName, setfirstName] = useState("");
   const [teeForm2, setTeeForm2] = useState("");
   const [teeForm3, setTeeForm3] = useState("");
   const [teeForm4, setTeeForm4] = useState("");
@@ -147,7 +148,7 @@ function Form() {
               type="text"
               id="teeFname"
               name="teeFname"
-              onChange={(e) => setTeeForm1(e.target.value)}
+              onChange={(e) => setfirstName(e.target.value)}
             />
           </div>
 
@@ -198,8 +199,8 @@ function Form() {
                 {industries.map((item) => {
                   return (
                     <li>
-                      <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" />
+                      <label for={item} value={item}>{item}</label>
+                      <input name={item} value={item} type="checkbox" />
                     </li>
                   );
                 })}
@@ -216,7 +217,7 @@ function Form() {
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" />
+                      <input name={item} value={item} type="checkbox" />
                     </li>
                   );
                 })}
@@ -228,7 +229,7 @@ function Form() {
             <button
               className="btnsForm"
               onClick={() =>
-                postMenteeForm(teeForm1, teeForm2, teeForm3, teeForm4)
+                postMenteeForm(firstName, teeForm2, teeForm3, teeForm4)
               }
             >
               Submit!
@@ -295,10 +296,10 @@ function Form() {
             <select
               id="lname"
               name="lname"
-              onChange={(e) => setTeeForm4(e.target.value)}
+              
             >
               {myersBriggsTypes.map((type) => {
-                return <option>{type}</option>;
+                return <option value={type} onChange={(e) => setTeeForm4(e.target.value)}>{type}</option>;
               })}
             </select>
           </div>
