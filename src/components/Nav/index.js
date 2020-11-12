@@ -3,6 +3,7 @@ import "./styles.css";
 import Form from "../Form";
 import RetrieveData from "../RetrieveData";
 import Chat from "../Chat";
+import Home from "../Home";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -12,6 +13,12 @@ function Navbar() {
       <Router>
         <div>
           <Link to="/">
+            <button className="btnNav" href="#">
+              Home
+            </button>
+          </Link>
+
+          <Link to="/apply">
             <button className="btnNav" href="#">
               Apply for programme
             </button>
@@ -30,6 +37,10 @@ function Navbar() {
             </button>
           </Link>
           <Switch>
+            <Route path="/apply">
+              <Form />
+            </Route>
+
             <Route path="/matchmaker">
               <RetrieveData />
             </Route>
@@ -39,7 +50,7 @@ function Navbar() {
             </Route>
 
             <Route path="/">
-              <Form />
+              <Home />
             </Route>
           </Switch>
         </div>
