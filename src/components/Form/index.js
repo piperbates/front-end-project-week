@@ -131,6 +131,9 @@ setMentorFormValues = {...mentorFormValues, userInput}
     setMentorForm("form hide");
   }
 
+  function pushDataIntoArray(array, item){
+    array.push(item)
+  }
 
 
   return (
@@ -235,7 +238,10 @@ setMentorFormValues = {...mentorFormValues, userInput}
                       <label for={item} value={item}>
                         {item}
                       </label>
-                      <input name={item} value={item} type="checkbox" onClick={menteeIndustryValues.push(item)}/>
+                      <input name={item} value={item} type="checkbox" onClick={()=>{
+                        pushDataIntoArray(menteeIndustryValues, item)
+                      }
+                      }/>
                       {/* setTeeIndustry */}
                     </li>
                   );
@@ -252,7 +258,10 @@ setMentorFormValues = {...mentorFormValues, userInput}
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} value={item} type="checkbox" onClick={menteeInterestValues.push(item)}/>
+                      <input name={item} value={item} type="checkbox" onClick={()=>{
+                        pushDataIntoArray(menteeInterestValues, item)
+                      }
+                      }/>
                        {/* setTeeInterest */}
                     </li>
                   );
@@ -354,7 +363,10 @@ setMentorFormValues = {...mentorFormValues, userInput}
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" onClick={mentorIndustryValues.push(item)}/>
+                      <input name={item} type="checkbox" onClick={()=>{
+                        pushDataIntoArray(mentorIndustryValues, item)
+                      }
+                      }/>
                     </li>
                   );
                 })}
@@ -369,7 +381,10 @@ setMentorFormValues = {...mentorFormValues, userInput}
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" onClick={mentorInterestValues.push(item)} />
+                      <input name={item} type="checkbox" onClick={()=>{
+                        pushDataIntoArray(mentorInterestValues, item)
+                      }
+                      } />
                       
                       {/* if checkbox is true, pass the item into an array 
                       Switches: Each switch would have a string of the input value.
@@ -390,7 +405,10 @@ setMentorFormValues = {...mentorFormValues, userInput}
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" onClick={mentorLanguageValues.push(item)}/>
+                      <input name={item} type="checkbox" onClick={()=>{
+                        pushDataIntoArray(mentorLanguageValues, item)
+                      
+                      }}/>
                       {/* setTorLanguages */}
                     </li>
                   );
