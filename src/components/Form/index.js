@@ -39,9 +39,7 @@ setMentorFormValues = {...mentorFormValues, userInput}
   const [teeMyersBriggs, setTeeMyersBriggs] = useState("");
   const [teeIndustry, setTeeIndustry] = useState([]);
   const [teeInterests, setTeeInterests] = useState([]);
-  console.log(
-    teeFirstName,
-  );
+  
 
   //Getting input value and save to variable Mentor
   const [torFirstName, setTorFirstName] = useState("");
@@ -144,6 +142,7 @@ setMentorFormValues = {...mentorFormValues, userInput}
 
   function pushDataIntoArray(array, item) {
     array.push(item);
+    array.join(", ")
   }
 
   return (
@@ -187,11 +186,12 @@ setMentorFormValues = {...mentorFormValues, userInput}
             <label for="teeFname">First Name:</label>
             <br />
             <br />
-            <input
+            <input 
               type="text"
               id="teeFname"
               name="teeFname"
               onChange={(e) => setTeeFirstName(e.target.value)}
+
             />
           </div>
 
@@ -301,7 +301,8 @@ setMentorFormValues = {...mentorFormValues, userInput}
           <div className="field">
             <button
               className="btnsForm"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setTeeIndustry(menteeInterestValues);
                 setTeeInterests(menteeInterestValues);
 
@@ -482,7 +483,8 @@ setMentorFormValues = {...mentorFormValues, userInput}
           <div className="field">
             <button
               className="btnsForm"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 postMentorForm(
                   torFirstName,
                   torLastName,

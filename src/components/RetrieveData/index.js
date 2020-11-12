@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DisplayTable from "../DisplayTable";
 
 import "./styles.css";
@@ -38,11 +38,9 @@ function RetrieveData() {
       <br />
       <br />
       <h1 className="h1Match">
-        See your match, who's <br /> your mentors going to be
+        See your match, who <br /> your mentor's going to be
       </h1>
-      <div className="matchImg">
-        <img src="https://cdn.dribbble.com/users/1647667/screenshots/13994154/media/a90aab4e64f4c96cc62b3618c8017be9.jpg" />
-      </div>
+     
       <button onClick={getAllData} className="btnsForm">
         Get all data
       </button>
@@ -56,21 +54,26 @@ function RetrieveData() {
         {/* <p>{quote.name}</p> */}
         <table id="data-display">
           <thead>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Ethnicity</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>About</th>
+            <th>Language experience</th>
             <th>Myers Briggs</th>
+            <th>Industry experience</th>
+            <th>Interests</th>
           </thead>
           <tbody>
             {formData &&
               formData.map((item) => {
-                console.log(item.name);
                 return (
                   <DisplayTable
-                    name={item.name}
-                    age={item.age}
-                    ethnicity={item.ethnicity}
+                    firstName={item.firstname}
+                    lastName={item.lastname}
+                    introduction={item.introduction}
+                    languages={item.languages}
                     myersBriggs={item.myersbriggs}
+                    industry={item.industry}
+                    interests={item.interests}
                   />
                 );
               })}
