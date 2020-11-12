@@ -3,28 +3,56 @@ import "./styles.css";
 import {
   myersBriggsTypes,
   personalInterests,
-  industries, languages
+  industries,
+  languages, menteeInterestValues, menteeIndustryValues, mentorInterestValues, mentorIndustryValues, mentorLanguageValues
 } from "./form-details";
-
 
 // Parent component of Mentor, Mentee, submit. In here we will take the information from Mentor & Mentee and the submit component will pass the data to our database
 function Form() {
   const [menteeForm, setMenteeForm] = useState("form hide");
   const [mentorForm, setMentorForm] = useState("form hide");
 
+  /* TO REFACTOR (Another time)
+  
+    const [menteeFormValues, setMenteeFormValues] = useState ({})
+
+    setMenteeFormValues = input value
+
+    mentorFormValues = {
+      TeeFirstName: "Piper"
+      teeLastName: "Bates"
+      
+    }
+setMentorFormValues = {...mentorFormValues, userInput}
+
+  */
+
   //Getting input value and save to variable Mentee
-  const [firstName, setfirstName] = useState("");
-  const [teeForm2, setTeeForm2] = useState("");
-  const [teeForm3, setTeeForm3] = useState("");
-  const [teeForm4, setTeeForm4] = useState("");
+  const [teeFirstName, setTeeFirstName] = useState("");
+  const [teeLastName, setTeeLastName] = useState("");
+  const [teeAbout, setTeeAbout] = useState("");
+  const [teeMyersBriggs, setTeeMyersBriggs] = useState("");
+  const [teeIndustry, setTeeIndustry] = useState([]);
+  const [teeInterests, setTeeInterests] = useState([]);
+  console.log(teeFirstName, teeLastName, teeAbout, teeIndustry, teeInterests)
 
   //Getting input value and save to variable Mentor
-  const [torForm1, setTorForm1] = useState("");
-  const [torForm2, setTorForm2] = useState("");
-  const [torForm3, setTorForm3] = useState("");
-  const [torForm4, setTorForm4] = useState("");
-  const [torForm5, setTorForm5] = useState("");
-  console.log("log", torForm1, torForm2, torForm3, torForm4, torForm5);
+  const [torFirstName, setTorFirstName] = useState("");
+  const [torLastName, setTorLastName] = useState("");
+  const [torAbout, setTorAbout] = useState("");
+  const [torMyersBriggs, setTorMyersBriggs] = useState("");
+  const [torIndustry, setTorIndustry] = useState([]);
+  const [torInterests, setTorInterests] = useState([]);
+  const [torLanguages, setTorLanguages] = useState([]);
+  console.log(torFirstName, torLastName, torAbout, torMyersBriggs, torIndustry, torInterests, torLanguages)
+
+  /* TO DO ON THIS PAGE:
+    - Rename all states
+    - Add states for each input, mentor and mentee 
+    - Figure out how to add state to checkboxes because I don't think this is working right now...
+  */
+
+  console.log("log", torFirstName, torLastName, torAbout, torMyersBriggs, torIndustry);
 
   //Zaid's test
   let createTodo = (msg) => {
@@ -103,6 +131,8 @@ function Form() {
     setMentorForm("form hide");
   }
 
+
+
   return (
     <div className="containerForm">
       <br />
@@ -124,6 +154,8 @@ function Form() {
       </div>
       <br />
       <br />
+
+
 
       {/* MENTEE FORM BELOW */}
       <div className={menteeForm}>
@@ -148,7 +180,7 @@ function Form() {
               type="text"
               id="teeFname"
               name="teeFname"
-              onChange={(e) => setfirstName(e.target.value)}
+              onChange={(e) => setTeeFirstName(e.target.value)}
             />
           </div>
 
@@ -160,7 +192,7 @@ function Form() {
               type="text"
               id="teeLname"
               name="teeLname"
-              onChange={(e) => setTeeForm2(e.target.value)}
+              onChange={(e) => setTeeLastName(e.target.value)}
             />
           </div>
           {/* About Mentee */}
@@ -173,7 +205,7 @@ function Form() {
               type="text"
               id="aboutMentee"
               name="aboutMentee"
-              onChange={(e) => setTeeForm3(e.target.value)}
+              onChange={(e) => setTeeAbout(e.target.value)}
             ></textarea>
           </div>
 
@@ -184,7 +216,7 @@ function Form() {
             <select
               id="lname"
               name="lname"
-              onChange={(e) => setTeeForm4(e.target.value)}
+              onChange={(e) => setTeeMyersBriggs(e.target.value)}
             >
               {myersBriggsTypes.map((type) => {
                 return <option>{type}</option>;
@@ -197,10 +229,14 @@ function Form() {
               <legend>What industries are you interested in?</legend>
               <ul>
                 {industries.map((item) => {
+                  
                   return (
                     <li>
-                      <label for={item} value={item}>{item}</label>
-                      <input name={item} value={item} type="checkbox" />
+                      <label for={item} value={item}>
+                        {item}
+                      </label>
+                      <input name={item} value={item} type="checkbox" onClick={menteeIndustryValues.push(item)}/>
+                      {/* setTeeIndustry */}
                     </li>
                   );
                 })}
@@ -210,14 +246,14 @@ function Form() {
             <fieldset id="mentee-personal">
               <legend>What are your personal interests?</legend>
               <ul>
-                {/* personalInterests */}
-                {/* Working from here */}
+             
 
                 {personalInterests.map((item) => {
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} value={item} type="checkbox" />
+                      <input name={item} value={item} type="checkbox" onClick={menteeInterestValues.push(item)}/>
+                       {/* setTeeInterest */}
                     </li>
                   );
                 })}
@@ -228,8 +264,11 @@ function Form() {
           <div className="field">
             <button
               className="btnsForm"
-              onClick={() =>
-                postMenteeForm(firstName, teeForm2, teeForm3, teeForm4)
+              onClick={() =>{
+                setTeeIndustry(menteeInterestValues);
+                setTeeInterests(menteeInterestValues)
+                
+                postMenteeForm(teeFirstName, teeLastName, teeAbout, teeMyersBriggs, teeIndustry, teeInterests)}
               }
             >
               Submit!
@@ -260,7 +299,7 @@ function Form() {
               type="text"
               id="fname"
               name="fname"
-              onChange={(e) => setTorForm1(e.target.value)}
+              onChange={(e) => setTorFirstName(e.target.value)}
             />
           </div>
 
@@ -272,7 +311,7 @@ function Form() {
               type="text"
               id="lname"
               name="lname"
-              onChange={(e) => setTorForm2(e.target.value)}
+              onChange={(e) => setTorLastName(e.target.value)}
             />
           </div>
 
@@ -285,7 +324,7 @@ function Form() {
               type="text"
               id="aboutMentee"
               name="aboutMentee"
-              onChange={(e) => setTeeForm3(e.target.value)}
+              onChange={(e) => setTorAbout(e.target.value)}
             ></textarea>
           </div>
 
@@ -293,13 +332,16 @@ function Form() {
             <label for="myersBriggs">Myers Briggs:</label>
             <br />
             <br />
-            <select
-              id="lname"
-              name="lname"
-              
-            >
+            <select id="myersBriggs" name="myersBriggs">
               {myersBriggsTypes.map((type) => {
-                return <option value={type} onChange={(e) => setTeeForm4(e.target.value)}>{type}</option>;
+                return (
+                  <option
+                    value={type}
+                    onChange={(e) => setTorMyersBriggs(e.target.value)}
+                  >
+                    {type}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -312,7 +354,7 @@ function Form() {
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" />
+                      <input name={item} type="checkbox" onClick={mentorIndustryValues.push(item)}/>
                     </li>
                   );
                 })}
@@ -320,14 +362,19 @@ function Form() {
             </fieldset>
           </div>
           <div class="field">
-            <fieldset id="mentee-personal">
+            <fieldset id="mentor-personal">
               <legend>What are your interests?</legend>
               <ul>
                 {personalInterests.map((item) => {
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" />
+                      <input name={item} type="checkbox" onClick={mentorInterestValues.push(item)} />
+                      
+                      {/* if checkbox is true, pass the item into an array 
+                      Switches: Each switch would have a string of the input value.
+                      */}
+                      {/* setTorInterests */}
                     </li>
                   );
                 })}
@@ -343,7 +390,8 @@ function Form() {
                   return (
                     <li>
                       <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" />
+                      <input name={item} type="checkbox" onClick={mentorLanguageValues.push(item)}/>
+                      {/* setTorLanguages */}
                     </li>
                   );
                 })}
@@ -351,18 +399,15 @@ function Form() {
             </fieldset>
           </div>
 
-          <div className="field">
-            <label for="lname">Experience:</label>
-            <br />
-            <br />
-            <input type="text" id="lname" name="lname" />
-          </div>
 
           <div className="field">
             <button
               className="btnsForm"
-              onClick={() =>
-                postMentorForm(torForm1, torForm2, torForm3, torForm4, torForm5)
+              onClick={() =>{
+                setTorIndustry(mentorIndustryValues)
+                setTorInterests(mentorInterestValues)
+                setTorLanguages(mentorLanguageValues)
+                postMentorForm(torFirstName, torLastName, torAbout, torMyersBriggs, torIndustry, torInterests, torLanguages)}
               }
             >
               Submit!

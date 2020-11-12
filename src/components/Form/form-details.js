@@ -29,6 +29,19 @@ export const myersBriggsTypes = [
       "JavaScript", "HTML", "CSS"
   ]
 
+  export const menteeInterestValues = [
+  ]
+  
+  export const menteeIndustryValues = [
+  ]
+  export const mentorInterestValues = [
+  ]
+
+  export const mentorIndustryValues = [
+  ]
+  export const mentorLanguageValues = [
+  ]
+
 // export myersBriggsTypes
 
 //   export const myersBriggs = myersBriggsTypes;
