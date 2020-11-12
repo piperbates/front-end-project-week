@@ -21,3 +21,8 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+
+// LogIn page should link to the Apply for programme page.... if user has already applied for programme then display User profile information
+// fetch request from the DB for the id of that USER.
+

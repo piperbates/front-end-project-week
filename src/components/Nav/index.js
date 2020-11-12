@@ -4,6 +4,7 @@ import Form from "../Form";
 import RetrieveData from "../RetrieveData";
 import Chat from "../Chat";
 import Home from "../Home";
+import LoginPage from "../LoginPage";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -14,7 +15,7 @@ function Navbar() {
         <div>
           <Link to="/">
             <button className="btnNav" href="#">
-              Home
+              Your Profile
             </button>
           </Link>
 
@@ -50,7 +51,7 @@ function Navbar() {
             </Route>
 
             <Route path="/">
-              <Home />
+              <LoginPage />
             </Route>
           </Switch>
         </div>
