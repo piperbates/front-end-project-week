@@ -94,6 +94,53 @@ label {
   text-align: left;
   color: #147592;
 }
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  resize: none;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+}
+
+fieldset {
+  margin-bottom: 30px;
+}
+
+fieldset li {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0px; margin: 0;
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+}
+fieldset label, fieldset input {
+  margin: auto;
+}
+/* 
+fieldset, fieldset ul, fieldset li, fieldset input, fieldset label {
+  margin: 0px; padding: 0px;
+}
+
+fieldset label {
+  word-wrap:break-word;
+}
+
+fieldset input {
+  vertical-align:middle;
+
+}
+
+fieldset ul {
+  display: inline;
+  list-style-type: none;
+} */
+
+
 
 /* .formImage {
   background-image: url(https://cdn.dribbble.com/users/1647667/screenshots/13994154/media/a90aab4e64f4c96cc62b3618c8017be9.jpg);
