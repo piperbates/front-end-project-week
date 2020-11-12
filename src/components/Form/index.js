@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Navbar from "../Nav";
-import Footer from "../Footer";
+import {
+  myersBriggsTypes,
+  personalInterests,
+  industries, languages
+} from "./form-details";
 
 // Parent component of Mentor, Mentee, submit. In here we will take the information from Mentor & Mentee and the submit component will pass the data to our database
 function Form() {
@@ -21,25 +24,6 @@ function Form() {
   const [torForm4, setTorForm4] = useState("");
   const [torForm5, setTorForm5] = useState("");
   console.log("log", torForm1, torForm2, torForm3, torForm4, torForm5);
-
-  const myersBriggsTypes = [
-    "ISTJ",
-    "ISFJ",
-    "INFJ",
-    "INTJ",
-    "ISTP",
-    "ISFP",
-    "INFP",
-    "INTP",
-    "ESTP",
-    "ESFP",
-    "ENFP",
-    "ENTP",
-    "ESTJ",
-    "ESFJ",
-    "ENFJ",
-    "ENTJ",
-  ];
 
   //Zaid's test
   let createTodo = (msg) => {
@@ -211,44 +195,31 @@ function Form() {
             <fieldset id="mentee-industries">
               <legend>What industries are you interested in?</legend>
               <ul>
-                <li>
-                  <label for="games-dev">Games Development</label>
-                  <input name="games-dev" type="checkbox" />
-                </li>
-                <li>
-                  <label for="dev-ops">Dev Ops</label>
-                  <input name="dev-ops" type="checkbox" />
-                </li>
-                <li>
-                  <label for="front-end">Front end</label>
-                  <input name="front-end" type="checkbox" />
-                </li>
-                <li>
-                  <label for="front-end">Front end</label>
-                  <input name="front-end" type="checkbox" />
-                </li>
+                {industries.map((item) => {
+                  return (
+                    <li>
+                      <label for={item}>{item}</label>
+                      <input name={item} type="checkbox" />
+                    </li>
+                  );
+                })}
               </ul>
             </fieldset>
 
             <fieldset id="mentee-personal">
               <legend>What are your personal interests?</legend>
               <ul>
-                <li>
-                  <label for="art">Art</label>
-                  <input name="art" type="checkbox" />
-                </li>
-                <li>
-                  <label for="movies">Movies</label>
-                  <input name="movies" type="checkbox" />
-                </li>
-                <li>
-                  <label for="sports">Sports</label>
-                  <input name="sports" type="checkbox" />
-                </li>
-                <li>
-                  <label for="reading">Reading</label>
-                  <input name="reading" type="checkbox" />
-                </li>
+                {/* personalInterests */}
+                {/* Working from here */}
+
+                {personalInterests.map((item) => {
+                  return (
+                    <li>
+                      <label for={item}>{item}</label>
+                      <input name={item} type="checkbox" />
+                    </li>
+                  );
+                })}
               </ul>
             </fieldset>
           </div>
@@ -336,44 +307,45 @@ function Form() {
             <fieldset id="mentor-industries">
               <legend>What industries have you got experience in?</legend>
               <ul>
-                <li>
-                  <label for="games-dev">Games Development</label>
-                  <input name="games-dev" type="checkbox" />
-                </li>
-                <li>
-                  <label for="dev-ops">Dev Ops</label>
-                  <input name="dev-ops" type="checkbox" />
-                </li>
-                <li>
-                  <label for="front-end">Front end</label>
-                  <input name="front-end" type="checkbox" />
-                </li>
-                <li>
-                  <label for="front-end">Front end</label>
-                  <input name="front-end" type="checkbox" />
-                </li>
+                {industries.map((item) => {
+                  return (
+                    <li>
+                      <label for={item}>{item}</label>
+                      <input name={item} type="checkbox" />
+                    </li>
+                  );
+                })}
               </ul>
             </fieldset>
-
+          </div>
+          <div class="field">
             <fieldset id="mentee-personal">
               <legend>What are your interests?</legend>
               <ul>
-                <li>
-                  <label for="art">Art</label>
-                  <input name="art" type="checkbox" />
-                </li>
-                <li>
-                  <label for="movies">Movies</label>
-                  <input name="movies" type="checkbox" />
-                </li>
-                <li>
-                  <label for="sports">Sports</label>
-                  <input name="sports" type="checkbox" />
-                </li>
-                <li>
-                  <label for="reading">Reading</label>
-                  <input name="reading" type="checkbox" />
-                </li>
+                {personalInterests.map((item) => {
+                  return (
+                    <li>
+                      <label for={item}>{item}</label>
+                      <input name={item} type="checkbox" />
+                    </li>
+                  );
+                })}
+              </ul>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset id="languages">
+              <legend>What languages are you familiar with?</legend>
+              <ul>
+                {languages.map((item) => {
+                  return (
+                    <li>
+                      <label for={item}>{item}</label>
+                      <input name={item} type="checkbox" />
+                    </li>
+                  );
+                })}
               </ul>
             </fieldset>
           </div>
@@ -382,12 +354,7 @@ function Form() {
             <label for="lname">Experience:</label>
             <br />
             <br />
-            <input
-              type="text"
-              id="lname"
-              name="lname"
-              
-            />
+            <input type="text" id="lname" name="lname" />
           </div>
 
           <div className="field">
