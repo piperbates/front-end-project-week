@@ -4,7 +4,12 @@ import {
   myersBriggsTypes,
   personalInterests,
   industries,
-  languages, menteeInterestValues, menteeIndustryValues, mentorInterestValues, mentorIndustryValues, mentorLanguageValues
+  languages,
+  menteeInterestValues,
+  menteeIndustryValues,
+  mentorInterestValues,
+  mentorIndustryValues,
+  mentorLanguageValues,
 } from "./form-details";
 
 // Parent component of Mentor, Mentee, submit. In here we will take the information from Mentor & Mentee and the submit component will pass the data to our database
@@ -34,7 +39,9 @@ setMentorFormValues = {...mentorFormValues, userInput}
   const [teeMyersBriggs, setTeeMyersBriggs] = useState("");
   const [teeIndustry, setTeeIndustry] = useState([]);
   const [teeInterests, setTeeInterests] = useState([]);
-  console.log(teeFirstName, teeLastName, teeAbout, teeIndustry, teeInterests)
+  console.log(
+    teeFirstName,
+  );
 
   //Getting input value and save to variable Mentor
   const [torFirstName, setTorFirstName] = useState("");
@@ -44,7 +51,15 @@ setMentorFormValues = {...mentorFormValues, userInput}
   const [torIndustry, setTorIndustry] = useState([]);
   const [torInterests, setTorInterests] = useState([]);
   const [torLanguages, setTorLanguages] = useState([]);
-  console.log(torFirstName, torLastName, torAbout, torMyersBriggs, torIndustry, torInterests, torLanguages)
+  // console.log(
+  //   torFirstName,
+  //   torLastName,
+  //   torAbout,
+  //   torMyersBriggs,
+  //   torIndustry,
+  //   torInterests,
+  //   torLanguages
+  // );
 
   /* TO DO ON THIS PAGE:
     - Rename all states
@@ -52,33 +67,27 @@ setMentorFormValues = {...mentorFormValues, userInput}
     - Figure out how to add state to checkboxes because I don't think this is working right now...
   */
 
-  console.log("log", torFirstName, torLastName, torAbout, torMyersBriggs, torIndustry);
-
-  //Zaid's test
-  let createTodo = (msg) => {
-    console.log("todo fnc", msg);
-    fetch(`http://localhost:5000/test`, {
-      method: "post",
-      body: JSON.stringify({ todo: msg }),
-      headers: { "Content-Type": "application/json" },
-      //Validation: ContentType
-    })
-      .then((res) => res.json()) //res.json() is an async function
-      .then((data) => console.log(data, "here's the data, buddy boy")) //In the browser
-      .catch((error) => console.log(error, "my error")); //uncaught promise rejection. The promise throws and error and I need to catch otherwise it will be thrown into the ether
-  };
-  //----------Test End------------//
+  console.log(
+    "log",
+    torFirstName,
+    torLastName,
+    torAbout,
+    torMyersBriggs,
+    torIndustry
+  );
 
   //Submut mentee function
-  function postMenteeForm(msg1, msg2, msg3, msg4) {
-    console.log("mentee fnc", msg1, msg2, msg3, msg4);
+  function postMenteeForm(firstName, lastName, introduction, myersBriggs, industry, interests) {
+    console.log("mentee fnc", firstName, lastName, introduction, myersBriggs, industry, interests);
     fetch(`http://localhost:5000/mentee`, {
       method: "post",
       body: JSON.stringify({
-        name: msg1,
-        age: msg2,
-        ethnicity: msg3,
-        myersBriggs: msg4,
+        firstName: firstName,
+        lastName: lastName,
+        introduction: introduction,
+        myersBriggs: myersBriggs,
+        industry: industry,
+        interests: interests
       }),
       headers: { "Content-Type": "application/json" },
       //Validation: ContentType
@@ -89,16 +98,18 @@ setMentorFormValues = {...mentorFormValues, userInput}
   }
 
   //Submut mantor function
-  function postMentorForm(msg1, msg2, msg3, msg4, msg5) {
-    console.log("mentor fnc", msg1, msg2, msg3, msg4, msg5);
+  function postMentorForm(firstName, lastName, introduction, languages, myersBriggs, industry, interests) {
+    console.log("mentor fnc", firstName, lastName, introduction, myersBriggs, industry);
     fetch(`http://localhost:5000/mentor`, {
       method: "post",
       body: JSON.stringify({
-        name: msg1,
-        age: msg2,
-        ethnicity: msg3,
-        myersBriggs: msg4,
-        experience: msg5,
+        firstName: firstName,
+        lastName: lastName,
+        introduction: introduction,
+        languages: languages,
+        myersBriggs: myersBriggs,
+        experience: industry,
+        interests: interests,
       }),
       headers: { "Content-Type": "application/json" },
       //Validation: ContentType
@@ -131,10 +142,9 @@ setMentorFormValues = {...mentorFormValues, userInput}
     setMentorForm("form hide");
   }
 
-  function pushDataIntoArray(array, item){
-    array.push(item)
+  function pushDataIntoArray(array, item) {
+    array.push(item);
   }
-
 
   return (
     <div className="containerForm">
@@ -157,8 +167,6 @@ setMentorFormValues = {...mentorFormValues, userInput}
       </div>
       <br />
       <br />
-
-
 
       {/* MENTEE FORM BELOW */}
       <div className={menteeForm}>
@@ -215,12 +223,21 @@ setMentorFormValues = {...mentorFormValues, userInput}
           <div className="field">
             <label for="myersBriggs">Myers Briggs:</label>
             <br />
+            <a
+              href="https://www.16personalities.com/free-personality-test"
+              target="_blank"
+            >
+              I haven't taken my Myers Briggs test
+            </a>
             <br />
             <select
               id="lname"
               name="lname"
               onChange={(e) => setTeeMyersBriggs(e.target.value)}
             >
+            {/*  <option 
+                    onChange={(e) => setTorMyersBriggs(e.target.value)}
+                  > */}
               {myersBriggsTypes.map((type) => {
                 return <option>{type}</option>;
               })}
@@ -232,16 +249,22 @@ setMentorFormValues = {...mentorFormValues, userInput}
               <legend>What industries are you interested in?</legend>
               <ul>
                 {industries.map((item) => {
-                  
                   return (
                     <li>
                       <label for={item} value={item}>
                         {item}
                       </label>
-                      <input name={item} value={item} type="checkbox" onClick={()=>{
-                        pushDataIntoArray(menteeIndustryValues, item)
-                      }
-                      }/>
+                      <input
+                        name={item}
+                        value={item}
+                        type="checkbox"
+                        onClick={() => {
+                          pushDataIntoArray(menteeIndustryValues, item);
+                        }}
+                        onChange={() => {
+                          setTeeIndustry(menteeIndustryValues);
+                        }}
+                      />
                       {/* setTeeIndustry */}
                     </li>
                   );
@@ -252,17 +275,22 @@ setMentorFormValues = {...mentorFormValues, userInput}
             <fieldset id="mentee-personal">
               <legend>What are your personal interests?</legend>
               <ul>
-             
-
                 {personalInterests.map((item) => {
                   return (
                     <li>
-                      <label for={item}>{item}</label>
-                      <input name={item} value={item} type="checkbox" onClick={()=>{
-                        pushDataIntoArray(menteeInterestValues, item)
-                      }
-                      }/>
-                       {/* setTeeInterest */}
+                      <label for={item} value={item}>{item}</label>
+                      <input
+                        name={item}
+                        value={item}
+                        type="checkbox"
+                        onClick={() => {
+                          pushDataIntoArray(menteeInterestValues, item);
+                        }}
+                        onChange={() => {
+                          setTeeInterests(menteeInterestValues);
+                        }}
+                      />
+                      {/* setTeeInterest */}
                     </li>
                   );
                 })}
@@ -273,12 +301,19 @@ setMentorFormValues = {...mentorFormValues, userInput}
           <div className="field">
             <button
               className="btnsForm"
-              onClick={() =>{
+              onClick={() => {
                 setTeeIndustry(menteeInterestValues);
-                setTeeInterests(menteeInterestValues)
-                
-                postMenteeForm(teeFirstName, teeLastName, teeAbout, teeMyersBriggs, teeIndustry, teeInterests)}
-              }
+                setTeeInterests(menteeInterestValues);
+
+                postMenteeForm(
+                  teeFirstName,
+                  teeLastName,
+                  teeAbout,
+                  teeMyersBriggs,
+                  teeIndustry,
+                  teeInterests
+                );
+              }}
             >
               Submit!
             </button>
@@ -340,17 +375,21 @@ setMentorFormValues = {...mentorFormValues, userInput}
           <div className="field">
             <label for="myersBriggs">Myers Briggs:</label>
             <br />
+            <a
+              href="https://www.16personalities.com/free-personality-test"
+              target="_blank"
+            >
+              I haven't taken my Myers Briggs test
+            </a>
             <br />
-            <select id="myersBriggs" name="myersBriggs">
+            <select
+              id="myersBriggs"
+              name="myersBriggs"
+              onChange={(e) => setTorMyersBriggs(e.target.value)}
+            >
+           
               {myersBriggsTypes.map((type) => {
-                return (
-                  <option
-                    value={type}
-                    onChange={(e) => setTorMyersBriggs(e.target.value)}
-                  >
-                    {type}
-                  </option>
-                );
+                return <option>{type}</option>;
               })}
             </select>
           </div>
@@ -362,30 +401,46 @@ setMentorFormValues = {...mentorFormValues, userInput}
                 {industries.map((item) => {
                   return (
                     <li>
-                      <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" onClick={()=>{
-                        pushDataIntoArray(mentorIndustryValues, item)
-                      }
-                      }/>
+                      <label for={item} value={item}>
+                        {item}
+                      </label>
+                      <input
+                        name={item}
+                        value={item}
+                        type="checkbox"
+                        onClick={() => {
+                          pushDataIntoArray(mentorIndustryValues, item);
+                        }}
+                        onChange={() => {
+                          setTorIndustry(mentorIndustryValues);
+                        }}
+                      />
                     </li>
                   );
                 })}
               </ul>
             </fieldset>
           </div>
-          <div class="field">
+          <div className="field">
             <fieldset id="mentor-personal">
               <legend>What are your interests?</legend>
               <ul>
                 {personalInterests.map((item) => {
                   return (
                     <li>
-                      <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" onClick={()=>{
-                        pushDataIntoArray(mentorInterestValues, item)
-                      }
-                      } />
-                      
+                      <label for={item} value={item}>{item}</label>
+                      <input
+                        name={item}
+                        type="checkbox"
+                        value={item}
+                        onClick={() => {
+                          pushDataIntoArray(mentorInterestValues, item);
+                        }}
+                        onChange={() => {
+                          setTorInterests(mentorInterestValues);
+                        }}
+                      />
+
                       {/* if checkbox is true, pass the item into an array 
                       Switches: Each switch would have a string of the input value.
                       */}
@@ -397,18 +452,25 @@ setMentorFormValues = {...mentorFormValues, userInput}
             </fieldset>
           </div>
 
-          <div class="field">
+          <div className="field">
             <fieldset id="languages">
               <legend>What languages are you familiar with?</legend>
               <ul>
                 {languages.map((item) => {
                   return (
                     <li>
-                      <label for={item}>{item}</label>
-                      <input name={item} type="checkbox" onClick={()=>{
-                        pushDataIntoArray(mentorLanguageValues, item)
-                      
-                      }}/>
+                      <label for={item} value={item}>{item}</label>
+                      <input
+                        name={item}
+                        type="checkbox"
+                        value={item}
+                        onClick={() => {
+                          pushDataIntoArray(mentorLanguageValues, item);
+                        }}
+                        onChange={() => {
+                          setTorLanguages(mentorLanguageValues);
+                        }}
+                      />
                       {/* setTorLanguages */}
                     </li>
                   );
@@ -417,16 +479,20 @@ setMentorFormValues = {...mentorFormValues, userInput}
             </fieldset>
           </div>
 
-
           <div className="field">
             <button
               className="btnsForm"
-              onClick={() =>{
-                setTorIndustry(mentorIndustryValues)
-                setTorInterests(mentorInterestValues)
-                setTorLanguages(mentorLanguageValues)
-                postMentorForm(torFirstName, torLastName, torAbout, torMyersBriggs, torIndustry, torInterests, torLanguages)}
-              }
+              onClick={() => {
+                postMentorForm(
+                  torFirstName,
+                  torLastName,
+                  torAbout,
+                  torLanguages,
+                  torMyersBriggs,
+                  torIndustry,
+                  torInterests
+                );
+              }}
             >
               Submit!
             </button>
