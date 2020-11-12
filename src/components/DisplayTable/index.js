@@ -1,16 +1,35 @@
 import React from "react";
-import { isCompositeComponent } from "react-dom/test-utils";
+// import { isCompositeComponent } from "react-dom/test-utils";
 import "./style.css";
 //This component will display the data from the data
 
-function DisplayTable({ name, age, ethnicity, myersBriggs }) {
+function DisplayTable({
+  firstName,
+  lastName,
+  introduction,
+  languages,
+  myersBriggs,
+  industry,
+  interests,
+}){
+  console.log(languages)
+
   return (
-      <tr>
-        <td>{name}</td>
-        <td>{age}</td>
-        <td>{ethnicity}</td>
-        <td>{myersBriggs}</td>
-      </tr>
+    <tr>
+      <td>{firstName}</td>
+      <td>{lastName}</td>
+      <td>{introduction}</td>
+      <td>{languages}</td>
+      
+      {/* {languages.map((item) => {
+        <td>{item.toString()}</td>
+
+      })} */}
+      
+      <td>{myersBriggs}</td>
+      <td>{industry}</td>
+      <td>{interests}</td>
+    </tr>
   );
 }
 
