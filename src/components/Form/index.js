@@ -22,6 +22,25 @@ function Form() {
   const [torForm5, setTorForm5] = useState("");
   console.log("log", torForm1, torForm2, torForm3, torForm4, torForm5);
 
+  const myersBriggsTypes = [
+    "ISTJ",
+    "ISFJ",
+    "INFJ",
+    "INTJ",
+    "ISTP",
+    "ISFP",
+    "INFP",
+    "INTP",
+    "ESTP",
+    "ESFP",
+    "ENFP",
+    "ENTP",
+    "ESTJ",
+    "ESFJ",
+    "ENFJ",
+    "ENTJ",
+  ];
+
   //Zaid's test
   let createTodo = (msg) => {
     console.log("todo fnc", msg);
@@ -120,6 +139,7 @@ function Form() {
       </div>
       <br />
       <br />
+
       {/* MENTEE FORM BELOW */}
       <div className={menteeForm}>
         <button onClick={hideMentee} className="btnsCloseForm">
@@ -136,51 +156,101 @@ function Form() {
           </div>
 
           <div className="field">
-            <label for="fname">Name:</label>
+            <label for="teeFname">First Name:</label>
             <br />
             <br />
             <input
               type="text"
-              id="fname"
-              name="fname"
+              id="teeFname"
+              name="teeFname"
               onChange={(e) => setTeeForm1(e.target.value)}
             />
           </div>
 
           <div className="field">
-            <label for="lname">Age:</label>
+            <label for="teeLname">Last Name:</label>
             <br />
             <br />
             <input
               type="text"
-              id="lname"
-              name="lname"
+              id="teeLname"
+              name="teeLname"
               onChange={(e) => setTeeForm2(e.target.value)}
             />
           </div>
-
+          {/* About Mentee */}
           <div className="field">
-            <label for="lname">Ethnicity</label>
+            <label for="aboutMentee">Tell us about yourself?</label>
             <br />
             <br />
-            <input
+            <textarea
+              maxlength="400"
               type="text"
-              id="lname"
-              name="lname"
+              id="aboutMentee"
+              name="aboutMentee"
               onChange={(e) => setTeeForm3(e.target.value)}
-            />
+            ></textarea>
           </div>
 
           <div className="field">
-            <label for="lname">MyersBriggs:</label>
+            <label for="myersBriggs">Myers Briggs:</label>
             <br />
             <br />
-            <input
-              type="text"
+            <select
               id="lname"
               name="lname"
               onChange={(e) => setTeeForm4(e.target.value)}
-            />
+            >
+              {myersBriggsTypes.map((type) => {
+                return <option>{type}</option>;
+              })}
+            </select>
+          </div>
+
+          <div className="field">
+            <fieldset id="mentee-industries">
+              <legend>What industries are you interested in?</legend>
+              <ul>
+                <li>
+                  <label for="games-dev">Games Development</label>
+                  <input name="games-dev" type="checkbox" />
+                </li>
+                <li>
+                  <label for="dev-ops">Dev Ops</label>
+                  <input name="dev-ops" type="checkbox" />
+                </li>
+                <li>
+                  <label for="front-end">Front end</label>
+                  <input name="front-end" type="checkbox" />
+                </li>
+                <li>
+                  <label for="front-end">Front end</label>
+                  <input name="front-end" type="checkbox" />
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset id="mentee-personal">
+              <legend>What are your personal interests?</legend>
+              <ul>
+                <li>
+                  <label for="art">Art</label>
+                  <input name="art" type="checkbox" />
+                </li>
+                <li>
+                  <label for="movies">Movies</label>
+                  <input name="movies" type="checkbox" />
+                </li>
+                <li>
+                  <label for="sports">Sports</label>
+                  <input name="sports" type="checkbox" />
+                </li>
+                <li>
+                  <label for="reading">Reading</label>
+                  <input name="reading" type="checkbox" />
+                </li>
+              </ul>
+            </fieldset>
           </div>
 
           <div className="field">
@@ -211,7 +281,7 @@ function Form() {
             </h3>
           </div>
           <div className="field">
-            <label for="fname">Name:</label>
+            <label for="fname">First Name:</label>
             <br />
             <br />
             <input
@@ -223,7 +293,7 @@ function Form() {
           </div>
 
           <div className="field">
-            <label for="lname">Age:</label>
+            <label for="lname">Last Name:</label>
             <br />
             <br />
             <input
@@ -235,27 +305,77 @@ function Form() {
           </div>
 
           <div className="field">
-            <label for="lname">Ethnicity</label>
+            <label for="aboutMentee">Tell us about yourself?</label>
             <br />
             <br />
-            <input
+            <textarea
+              maxlength="400"
               type="text"
-              id="lname"
-              name="lname"
-              onChange={(e) => setTorForm3(e.target.value)}
-            />
+              id="aboutMentee"
+              name="aboutMentee"
+              onChange={(e) => setTeeForm3(e.target.value)}
+            ></textarea>
           </div>
 
           <div className="field">
-            <label for="lname">MyersBriggs:</label>
+            <label for="myersBriggs">Myers Briggs:</label>
             <br />
             <br />
-            <input
-              type="text"
+            <select
               id="lname"
               name="lname"
-              onChange={(e) => setTorForm4(e.target.value)}
-            />
+              onChange={(e) => setTeeForm4(e.target.value)}
+            >
+              {myersBriggsTypes.map((type) => {
+                return <option>{type}</option>;
+              })}
+            </select>
+          </div>
+
+          <div className="field">
+            <fieldset id="mentor-industries">
+              <legend>What industries have you got experience in?</legend>
+              <ul>
+                <li>
+                  <label for="games-dev">Games Development</label>
+                  <input name="games-dev" type="checkbox" />
+                </li>
+                <li>
+                  <label for="dev-ops">Dev Ops</label>
+                  <input name="dev-ops" type="checkbox" />
+                </li>
+                <li>
+                  <label for="front-end">Front end</label>
+                  <input name="front-end" type="checkbox" />
+                </li>
+                <li>
+                  <label for="front-end">Front end</label>
+                  <input name="front-end" type="checkbox" />
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset id="mentee-personal">
+              <legend>What are your interests?</legend>
+              <ul>
+                <li>
+                  <label for="art">Art</label>
+                  <input name="art" type="checkbox" />
+                </li>
+                <li>
+                  <label for="movies">Movies</label>
+                  <input name="movies" type="checkbox" />
+                </li>
+                <li>
+                  <label for="sports">Sports</label>
+                  <input name="sports" type="checkbox" />
+                </li>
+                <li>
+                  <label for="reading">Reading</label>
+                  <input name="reading" type="checkbox" />
+                </li>
+              </ul>
+            </fieldset>
           </div>
 
           <div className="field">
@@ -266,7 +386,7 @@ function Form() {
               type="text"
               id="lname"
               name="lname"
-              onChange={(e) => setTorForm5(e.target.value)}
+              
             />
           </div>
 
