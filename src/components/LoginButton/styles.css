@@ -1,0 +1,11 @@
+.loginPage {
+  background-color: #d7e2ff;
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.h2Login {
+  padding: 20px;
+}

@@ -1,15 +1,25 @@
-#data-display{
-    margin: auto;
+#data-display {
+  margin: auto;
 
-    padding: 15px;
-    
+  padding: 15px;
 }
 
 #data-display th {
-    border-bottom: 1px solid black;
-    padding: 3px;
+  border-bottom: 1px solid #00adbb;
+  padding: 3px;
 }
 
 #data-display td {
-    padding: 10px;
+  padding: 10px;
+}
+
+.tr:nth-child(odd) {
+  border-bottom: 1px solid #00adbb;
+  padding: 3px;
+  background-color: rgba(240, 144, 131, 0.1);
+}
+
+.srcImgs {
+  border-radius: 70px;
+  padding: 10px;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./styles.css";
 import {
   myersBriggsTypes,
@@ -14,6 +15,8 @@ import {
 
 // Parent component of Mentor, Mentee, submit. In here we will take the information from Mentor & Mentee and the submit component will pass the data to our database
 function Form() {
+  const { user, isAuthenticated } = useAuth0();
+
   const [menteeForm, setMenteeForm] = useState("form hide");
   const [mentorForm, setMentorForm] = useState("form hide");
 
@@ -39,7 +42,6 @@ setMentorFormValues = {...mentorFormValues, userInput}
   const [teeMyersBriggs, setTeeMyersBriggs] = useState("");
   const [teeIndustry, setTeeIndustry] = useState([]);
   const [teeInterests, setTeeInterests] = useState([]);
-  
 
   //Getting input value and save to variable Mentor
   const [torFirstName, setTorFirstName] = useState("");
@@ -75,8 +77,33 @@ setMentorFormValues = {...mentorFormValues, userInput}
   );
 
   //Submut mentee function
-  function postMenteeForm(firstName, lastName, introduction, myersBriggs, industry, interests) {
-    console.log("mentee fnc", firstName, lastName, introduction, myersBriggs, industry, interests);
+  function postMenteeForm(
+    firstName,
+    lastName,
+    introduction,
+    myersBriggs,
+    industry,
+    interests,
+    gpic,
+    gid,
+    gname,
+    guser,
+    gemail
+  ) {
+    console.log(
+      "mentee fnc",
+      firstName,
+      lastName,
+      introduction,
+      myersBriggs,
+      industry,
+      interests,
+      gpic,
+      gid,
+      gname,
+      guser,
+      gemail
+    );
     fetch(`http://localhost:5000/mentee`, {
       method: "post",
       body: JSON.stringify({
@@ -85,7 +112,12 @@ setMentorFormValues = {...mentorFormValues, userInput}
         introduction: introduction,
         myersBriggs: myersBriggs,
         industry: industry,
-        interests: interests
+        interests: interests,
+        gpic: gpic,
+        gid: gid,
+        gname: gname,
+        gtime: guser,
+        gemail: gemail,
       }),
       headers: { "Content-Type": "application/json" },
       //Validation: ContentType
@@ -96,8 +128,33 @@ setMentorFormValues = {...mentorFormValues, userInput}
   }
 
   //Submut mantor function
-  function postMentorForm(firstName, lastName, introduction, languages, myersBriggs, industry, interests) {
-    console.log("mentor fnc", firstName, lastName, introduction, myersBriggs, industry);
+  function postMentorForm(
+    firstName,
+    lastName,
+    introduction,
+    languages,
+    myersBriggs,
+    industry,
+    interests,
+    gpic,
+    gid,
+    gname,
+    guser,
+    gemail
+  ) {
+    console.log(
+      "mentor fnc",
+      firstName,
+      lastName,
+      introduction,
+      myersBriggs,
+      industry,
+      gpic,
+      gid,
+      gname,
+      guser,
+      gemail
+    );
     fetch(`http://localhost:5000/mentor`, {
       method: "post",
       body: JSON.stringify({
@@ -108,6 +165,11 @@ setMentorFormValues = {...mentorFormValues, userInput}
         myersBriggs: myersBriggs,
         experience: industry,
         interests: interests,
+        gpic: gpic,
+        gid: gid,
+        gname: gname,
+        gtime: guser,
+        gemail: gemail,
       }),
       headers: { "Content-Type": "application/json" },
       //Validation: ContentType
@@ -142,7 +204,7 @@ setMentorFormValues = {...mentorFormValues, userInput}
 
   function pushDataIntoArray(array, item) {
     array.push(item);
-    array.join(", ")
+    array.join(", ");
   }
 
   return (
@@ -156,6 +218,10 @@ setMentorFormValues = {...mentorFormValues, userInput}
       </h1>
       <br />
       <br />
+      <div className="imgs">
+        <img src="https://cdn.dribbble.com/users/1647667/screenshots/13994154/media/a90aab4e64f4c96cc62b3618c8017be9.jpg" />
+      </div>
+
       <div className="buttonsDivForm">
         <button onClick={showMentor} className="btnsForm">
           Mentor Form
@@ -186,12 +252,11 @@ setMentorFormValues = {...mentorFormValues, userInput}
             <label for="teeFname">First Name:</label>
             <br />
             <br />
-            <input 
+            <input
               type="text"
               id="teeFname"
               name="teeFname"
               onChange={(e) => setTeeFirstName(e.target.value)}
-
             />
           </div>
 
@@ -223,19 +288,22 @@ setMentorFormValues = {...mentorFormValues, userInput}
           <div className="field">
             <label for="myersBriggs">Myers Briggs:</label>
             <br />
-            <a
-              href="https://www.16personalities.com/free-personality-test"
-              target="_blank"
-            >
-              I haven't taken my Myers Briggs test
-            </a>
+            <div className="mText">
+              <a
+                id="mText"
+                href="https://www.16personalities.com/free-personality-test"
+                target="_blank"
+              >
+                I haven't taken my Myers Briggs test
+              </a>
+            </div>
             <br />
             <select
               id="lname"
               name="lname"
               onChange={(e) => setTeeMyersBriggs(e.target.value)}
             >
-            {/*  <option 
+              {/*  <option 
                     onChange={(e) => setTorMyersBriggs(e.target.value)}
                   > */}
               {myersBriggsTypes.map((type) => {
@@ -278,7 +346,9 @@ setMentorFormValues = {...mentorFormValues, userInput}
                 {personalInterests.map((item) => {
                   return (
                     <li>
-                      <label for={item} value={item}>{item}</label>
+                      <label for={item} value={item}>
+                        {item}
+                      </label>
                       <input
                         name={item}
                         value={item}
@@ -312,7 +382,12 @@ setMentorFormValues = {...mentorFormValues, userInput}
                   teeAbout,
                   teeMyersBriggs,
                   teeIndustry,
-                  teeInterests
+                  teeInterests,
+                  user.picture,
+                  user.sub,
+                  user.name,
+                  user.updated_at,
+                  user.email
                 );
               }}
             >
@@ -388,7 +463,6 @@ setMentorFormValues = {...mentorFormValues, userInput}
               name="myersBriggs"
               onChange={(e) => setTorMyersBriggs(e.target.value)}
             >
-           
               {myersBriggsTypes.map((type) => {
                 return <option>{type}</option>;
               })}
@@ -429,7 +503,9 @@ setMentorFormValues = {...mentorFormValues, userInput}
                 {personalInterests.map((item) => {
                   return (
                     <li>
-                      <label for={item} value={item}>{item}</label>
+                      <label for={item} value={item}>
+                        {item}
+                      </label>
                       <input
                         name={item}
                         type="checkbox"
@@ -460,7 +536,9 @@ setMentorFormValues = {...mentorFormValues, userInput}
                 {languages.map((item) => {
                   return (
                     <li>
-                      <label for={item} value={item}>{item}</label>
+                      <label for={item} value={item}>
+                        {item}
+                      </label>
                       <input
                         name={item}
                         type="checkbox"
@@ -492,7 +570,12 @@ setMentorFormValues = {...mentorFormValues, userInput}
                   torLanguages,
                   torMyersBriggs,
                   torIndustry,
-                  torInterests
+                  torInterests,
+                  user.picture,
+                  user.sub,
+                  user.name,
+                  user.updated_at,
+                  user.email
                 );
               }}
             >

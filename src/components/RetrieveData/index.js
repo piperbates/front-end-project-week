@@ -37,23 +37,30 @@ function RetrieveData() {
     <div className="containerMatch">
       <br />
       <br />
-      <h1 className="h1Match">
+      <h1 className="h1Form">
         See your match, who <br /> your mentor's going to be
       </h1>
-     
+      <div className="imgs">
+        <img src="https://cdn.dribbble.com/users/1647667/screenshots/10748446/media/46e4cd887fb570b00ed4779244bfb9b6.jpg" />
+      </div>
       <button onClick={getAllData} className="btnsForm">
         Get all data
       </button>
+      <br />
+      <br />
       <div>
         <input onChange={(e) => setText(e.target.value)} />
         <button onClick={() => matchMB(text)} className="btnsForm">
           Get matches
         </button>
       </div>
+      <br />
+      <br />
       <div>
         {/* <p>{quote.name}</p> */}
-        <table id="data-display">
+        <table className="table" id="data-display">
           <thead>
+            <th></th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>About</th>
@@ -61,6 +68,8 @@ function RetrieveData() {
             <th>Myers Briggs</th>
             <th>Industry experience</th>
             <th>Interests</th>
+            <th>Last logged-in</th>
+            <th>Email</th>
           </thead>
           <tbody>
             {formData &&
@@ -74,6 +83,11 @@ function RetrieveData() {
                     myersBriggs={item.myersbriggs}
                     industry={item.industry}
                     interests={item.interests}
+                    gid={item.gid}
+                    gname={item.gname}
+                    gpic={item.gpic}
+                    gtime={item.gtime}
+                    gemail={item.gemail}
                   />
                 );
               })}

@@ -4,18 +4,25 @@ background: url('https://cdn.dribbble.com/users/1647667/screenshots/13994154/med
 background-repeat: no-repeat;
 } */
 
-.matchImg img {
-  z-index: -1;
-  position: relative;
-}
-
 .containerMatch {
   background-image: linear-gradient(
-    180deg);
-    /* background-color:  rgba(215, 226, 255, .5), */
+    180deg,
+    rgba(215, 226, 255, 1),
+    rgba(255, 0, 0, 0)
+  );
 }
 
 .h1Match {
   padding: 20px;
   color: #092b7e;
+}
+
+th {
+  color: #092b7e;
+}
+
+table {
+  max-width: 1000px;
+  table-layout: fixed;
+  min-width: 100px;
 }
