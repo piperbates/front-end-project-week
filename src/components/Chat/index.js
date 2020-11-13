@@ -5,9 +5,16 @@ import LoginPage from "../LoginPage";
 
 function Chat() {
   return (
-    <div>
-      <LoginPage />
-      <p>Chat Room Goes Here</p>
+    <div className="containerForm">
+      {/* <LoginPage /> */}
+      <br />
+      <br />
+      <br />
+      <br />
+      <p>strech goal </p>
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

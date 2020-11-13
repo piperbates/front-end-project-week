@@ -6,14 +6,16 @@ function LoginButton() {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   return (
     !isAuthenticated && (
-      <div className="loginPage">
-        <h2 className="h2Login">Welcome, please login to continue</h2>
-        <button
-          className="btnsForm loginBtn"
-          onClick={() => loginWithRedirect()}
-        >
-          Login
-        </button>
+      <div className="mainLogin">
+        <div className="loginPage">
+          <h2 className="h2Login">Welcome, please login to continue</h2>
+          <button
+            className="btnsForm loginBtn"
+            onClick={() => loginWithRedirect()}
+          >
+            Login
+          </button>
+        </div>
       </div>
     )
   );

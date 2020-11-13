@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
+import { Helmet } from "react-helmet";
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
@@ -15,6 +16,9 @@ ReactDOM.render(
     clientId={clientId}
     redirectUri={window.location.origin}
   >
+    <Helmet>
+      <title>The Sassy Elephants</title>
+    </Helmet>
     <App />
   </Auth0Provider>,
   document.getElementById("root")

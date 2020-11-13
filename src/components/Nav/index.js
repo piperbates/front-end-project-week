@@ -7,6 +7,7 @@ import Home from "../Home";
 import LoginPage from "../LoginPage";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import LogoutButton from "../LoginButton";
 
 function Navbar() {
   return (
