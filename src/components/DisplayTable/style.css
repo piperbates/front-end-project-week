@@ -19,7 +19,22 @@
   background-color: rgba(240, 144, 131, 0.1);
 }
 
-.srcImgs {
+/* .srcImgs {
   border-radius: 70px;
   padding: 10px;
-}
+  vertical-align: middle;
+} */
+
+/* .imgUsersSub {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* .imgUsers {
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+} */

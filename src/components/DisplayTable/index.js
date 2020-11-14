@@ -32,7 +32,16 @@ function DisplayTable({
 
   return (
     <tr className="tr">
-      <img className="srcImgs" src={gpic} alt={gname} />
+      <td>
+        <img
+          style={{ verticalAlign: "middle" }}
+          className="srcImgs"
+          width="100px"
+          src={gpic}
+          alt={gname}
+        />
+      </td>
+
       <td>{firstName}</td>
       <td>{lastName}</td>
       <td>{introduction}</td>
@@ -57,3 +66,4 @@ function DisplayTable({
 }
 
 export default DisplayTable;
+// INFP;

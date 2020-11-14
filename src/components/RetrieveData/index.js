@@ -8,6 +8,7 @@ import "./styles.css";
 function RetrieveData() {
   const [formData, setFormData] = useState([]);
   const [text, setText] = useState("");
+  const [formData2, setFormData2] = useState([]);
 
   async function getAllData() {
     const res = await fetch("http://www.localhost:5000/mentor");
@@ -16,6 +17,15 @@ function RetrieveData() {
     let payload = data.payload;
     console.log(payload);
     setFormData(payload);
+  }
+
+  async function getAllDataMentee() {
+    const res = await fetch("http://www.localhost:5000/mentee");
+    const data = await res.json();
+    console.log(data);
+    let payload = data.payload;
+    console.log(payload);
+    setFormData2(payload);
   }
   // function handleClick() {
   //   setFormData(formData);
@@ -43,7 +53,13 @@ function RetrieveData() {
       <div className="imgs">
         <img src="https://cdn.dribbble.com/users/1647667/screenshots/10748446/media/46e4cd887fb570b00ed4779244bfb9b6.jpg" />
       </div>
-      <button onClick={getAllData} className="btnsForm">
+      <button
+        onClick={() => {
+          getAllData();
+          getAllDataMentee();
+        }}
+        className="btnsForm"
+      >
         Get all data
       </button>
       <br />
@@ -74,6 +90,27 @@ function RetrieveData() {
           <tbody>
             {formData &&
               formData.map((item) => {
+                return (
+                  <DisplayTable
+                    firstName={item.firstname}
+                    lastName={item.lastname}
+                    introduction={item.introduction}
+                    languages={item.languages}
+                    myersBriggs={item.myersbriggs}
+                    industry={item.industry}
+                    interests={item.interests}
+                    gid={item.gid}
+                    gname={item.gname}
+                    gpic={item.gpic}
+                    gtime={item.gtime}
+                    gemail={item.gemail}
+                  />
+                );
+              })}
+          </tbody>
+          <tbody>
+            {formData2 &&
+              formData2.map((item) => {
                 return (
                   <DisplayTable
                     firstName={item.firstname}
